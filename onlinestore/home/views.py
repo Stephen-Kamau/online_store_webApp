@@ -31,5 +31,5 @@ def show(request):
 
 
 def details(request, id):
-    items = Store_items.objects.get(id = id)
+    items = Store_items.objects.get(itemId = id)
     return render(request,'./home/details.html', {'items':items})

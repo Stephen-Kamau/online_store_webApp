@@ -4,22 +4,22 @@
    	<h4 class="center grey-text">Furniture</h4>
 	<div class="container">
 		<div class="row">
-		{% for item in items %}
+		{% for allItem in allItems %}
 			<div class="col s6 md3">
 				<div class="card z-depth-0">
 				<div class="card-content center ">
-					<h6>{{ allItems.title }}</h6>
+					<h6>{{ allItem.title }}</h6>
 					<ul>
-						<li>Owner Email ;{{ allItems.ownerEmail }}</li>
-            <li>Owner Phone :{{ allItems.ownerPhone }}</li>
-            <li>Built Type :{{ allItems.BuiltType }}</li>
-            <li>Posted Time : {{ allItems.post_time }}</li>
-            <li>Ii It Bought: {{ allItems.bought_status }}</li>
-            <li>Costs : {{ allItems.price }}</li>
+						<li>Owner Email ;{{ allItem.ownerEmail }}</li>
+            <li>Owner Phone :{{ allItem.ownerPhone }}</li>
+            <li>Built Type :{{ allItem.BuiltType }}</li>
+            <li>Posted Time : {{ allItem.post_time }}</li>
+            <li>Ii It Bought: {{ allItem.bought_status }}</li>
+            <li>Costs : {{ allItem.price }}</li>
 					</ul>
 				</div>
 				<div class="card-action right-align">
-              <a class='brand-text' href='detail.html/{{item.id}}'>More Info</a>
+              <a class='brand-text' href='detail.html/{{allItem.itemId}}'>More Info</a>
 				</div>
 			</div>
 			{% endfor %}
