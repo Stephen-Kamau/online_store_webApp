@@ -1,0 +1,15 @@
+{% extends './base.html' %}
+
+{% block body %}
+<div class="center">
+  					<h6>{{ item.title }}</h6>
+					<ul>
+						<li>Owner Email ;{{ item.ownerEmail }}</li>
+            <li>Owner Phone :{{ item.ownerPhone }}</li>
+            <li>Built Type :{{ item.BuiltType }}</li>
+            <li>Posted Time : {{ item.post_time }}</li>
+            <li>Ii It Bought: {{ item.bought_status }}</li>
+            <li>Costs : {{ item.price }}</li>
+					</ul>
+</div>
+{% endblock %}
