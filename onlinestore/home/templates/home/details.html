@@ -1,15 +1,46 @@
 {% extends './base.html' %}
 
 {% block body %}
-<div class="center">
-  					<h6>{{ item.title }}</h6>
-					<ul>
-						<li>Owner Email ;{{ item.ownerEmail }}</li>
-            <li>Owner Phone :{{ item.ownerPhone }}</li>
-            <li>Built Type :{{ item.BuiltType }}</li>
-            <li>Posted Time : {{ item.post_time }}</li>
-            <li>Ii It Bought: {{ item.bought_status }}</li>
-            <li>Costs : {{ item.price }}</li>
-					</ul>
+<div class="card center details"  >
+  <h5 class="card-title">Buy goods with us Today</h5>
+  <img src="/media/{{items.pic}}" class="card-img-top image-fluid details_img" alt="details for image">
+  <div class="card-body">
+    <h5 class="card-title">{{ items.itemTitle }}</h5>
+    <p class="card-text"><b>Description : </b>  {{ items.description }}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a href="mailto:{{ items.ownerEmail }}">Owner Email ;{{ items.ownerEmail }}</a></li>
+    <li class="list-group-item" ><a href="https://api.whatsapp.com/send?phone={{ items.ownerPhone }}">Owner Phone :{{ items.ownerPhone }}</a></li>
+    <li class="list-group-item">Ii It Bought: {{ items.bought_status }}</li>
+    <!-- <li class="list-group-item"></li> -->
+    <!-- <li class="list-group-item"></li> -->
+  </ul>
+  <div class="card-body">
+    <a href="{% url 'home:show' %}" class="card-link btn btn-success">Back Home</a>
+    <a href="{% url 'orders:buyGoods' %}" class="card-link btn btn-primary ">Buy Item</a>
+    <!-- {% csrf_token %} -->
+    <a  class=" btn btn-success card-link" onclick="showHint({{items.itemId}});">Add to cart</a>
+<!-- href="{% url 'orders:ordersGoods' %}" -->
+<script type="text/javascript">
+    function showHint(id) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        // id =
+        // document.getElementById("").innerHTML = this.responseText;
+        alert(this.responseText);
+      }
+    };
+    // xmlhttp.open("POST" ,"/orders/, true);
+    xmlhttp.open("GET" ,"/orders/?id="+id, true);
+    // xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    // xmlhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+    xmlhttp.send();
+  }
+</script>
+  </div>
+  <div class="card-footer">
+    <small class="text-muted">Posted Time : {{ items.post_time }}</small>
+  </div>
 </div>
 {% endblock %}

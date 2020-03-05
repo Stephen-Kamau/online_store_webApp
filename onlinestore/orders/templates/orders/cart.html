@@ -1,0 +1,69 @@
+
+    {% extends "./base.html" %}
+
+    {% block body %}
+      <h4 class="center grey-text">Online Store</h4>
+    	<div class="container">
+
+      <div class="row">
+      <!-- <div class="card-deck"> -->
+
+          {% for cartItem in cartItems %}
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card">
+
+              <img src="/media/{{cartItem.itemId.pic}}" class="card-img-top img-fluid img-thumbnail " alt="image">
+              <div class="card-body">
+                <h5 class="card-title">This is Cart Display for {{ username }}</h5>
+                <small><p class="card-text btn btn-info btn-sm"><b>price:</b> KSH. {{ cartItem.price }}</p></small>
+                <small><p class="card-text"><b>Type:</b>  {{ cartItem.itemId.BuiltType }}</p></small>
+                <small><p class="card-text"><b>Mail:</b>  {{ cartItem.ownerEmail }}</p></small>
+                  <small><p class="card-text"><b>Tel:</b>  {{ cartItem.itemId.ownerPhone }}</p></small>
+                <small><p class="card-text"><b>Desc:</b>  {{ cartItem.itemId.description }}</p></small>
+                {{cartItem.itemId_id}}
+              </div>
+              <div class="card-action ">
+                <small><a class='btn btn-info btn-sm left-align mr-1.5' href="{% url 'home:show' %}">Back </a></small>
+                <small><a class='btn btn-danger btn-sm right-align' onclick="showHint({{cartItem.itemId_id}});">del</a></small>
+              <!-- href="{% url 'orders:delete'  %}" -->
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">{{ cartItem.post_time }}</small>
+              </div>
+              <script type="text/javascript">
+                  function showHint(id) {
+                  var xmlhttp = new XMLHttpRequest();
+                  xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                      // id =
+                      // document.getElementById("").innerHTML = this.responseText;
+                      alert("Item Removed Successfully!")
+                      alert(this.responseText);
+                      // alert(id);
+                    }
+                  };
+                  // xmlhttp.open("POST" ,"/orders/, true);
+                  xmlhttp.open("GET" , "{% url 'orders:delete'  %}?id="+id, true);
+                  // xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                  // xmlhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+                  xmlhttp.send();
+                }
+              </script>
+
+           </div>
+          </div>
+        {% endfor %}
+    </div>
+    </div>
+
+    {% endblock %}
+    <!-- <a class='btn btn-info right-align mr-1.5' href="{% url 'home:details' allItem.itemId %}">Buy Item</a> -->
+    <!-- <a class='btn btn-info right-align' href="{% url 'home:details' allItem.itemId %}">More Info</a> -->
+    <h1>{{username}}</h1>
+    {% for item in cartItems %}
+    <h1>{{item.ownerEmail}}</h1>
+    <h1>{{item.buyerId_id}}</h1>
+    <h1>{{item.itemId_id}}</h1>
+    <h1>{{item.orderId}}</h1>
+    <img src="/media/{{item.itemId.pic}}" alt="{{item.itemId.pic}}">
+    {% endfor %}

@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <meta charset="utf-8">
+  <head>
+  {% block top %}
+
+	<title>online store</title>
+  <link rel="stylesheet" type="text/css" href="{% static './home/css/bootstrap.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static './home/css/materialize.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static './home/css/style.css' %}">
+  <!-- <link rel="stylesheet" type="text/css" href="{% static './home/js/main.js' %}"> -->
+	<style type="text/css" >
+        		.brand{
+        			background: #cbb09c !important;
+        		}
+        		.brand-text{
+        			color: #cbb09c !important;
+
+        		}
+            .container{
+
+            }
+        		nav{
+        			background:transparent;
+        		}
+        		form{
+        			max-width: 460px;
+        			margin: 20px auto;
+        			padding: 20px;
+        		}
+            .details{
+              padding-top: 50px;
+              margin-left: 18%;
+              width:50%
+              /* position:absolute; */
+            }
+            .details_img{
+              height: 300px;
+              width: 350px;
+              position: relative;
+              margin-left: 25%;
+            }
+
+	</style>
+  </head>
+
+
+{% endblock %}
+<body>
+    {%  block header %}
+  <nav class="white-z-depth-0">
+  		<div class="container">
+        <!-- <h1>{{username}}</h1> -->
+        <a href="{% url 'home:show' %}"class="mr-1.5 bg-danger btn">Home</a>
+        <a href="{% url 'orders:displayCart' %}"class="mr-1.5 bg-danger btn">Cart</a>
+        {% if username %}
+        <a href="{% url 'login:signout' %}"class="mr-1.5 bg-danger btn">Sign Out</a>
+        {% else %}
+        <a href="{% url 'login:login' %}"class="mr-1.5 bg-danger btn">Login</a>
+        {% endif %}
+  			<ul id="nav-mobile" class="right hide-on-small-and-down">
+  				<li><a href="{% url 'home:home' %}" class="btn brand z-depth-0">Add Items</a></li>
+  			</ul>
+  		</div>
+	</nav>
+    {% endblock %}
+    {%  block body %}
+    <h1>Nothing yet</h1>
+    {% endblock %}
+    {%  block footer %}
+          <footer class="section">
+          	<div class="center grey-text">Copyright steve's  store 2020</div>
+          </footer>
+    {% endblock %}
+
+  </body>
+</html>

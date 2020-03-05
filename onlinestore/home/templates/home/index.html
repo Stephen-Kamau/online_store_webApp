@@ -1,30 +1,33 @@
 {% extends "./base.html" %}
 
 {% block body %}
-   	<h4 class="center grey-text">Furniture</h4>
+  <h4 class="center grey-text">Online Store</h4>
 	<div class="container">
-		<div class="row">
-		{% for allItem in allItems %}
-			<div class="col s6 md3">
-				<div class="card z-depth-0">
-				<div class="card-content center ">
-					<h6>{{ allItem.title }}</h6>
-					<ul>
-						<li>Owner Email ;{{ allItem.ownerEmail }}</li>
-            <li>Owner Phone :{{ allItem.ownerPhone }}</li>
-            <li>Built Type :{{ allItem.BuiltType }}</li>
-            <li>Posted Time : {{ allItem.post_time }}</li>
-            <li>Ii It Bought: {{ allItem.bought_status }}</li>
-            <li>Costs : {{ allItem.price }}</li>
-					</ul>
-				</div>
-				<div class="card-action right-align">
-              <a class='brand-text' href='detail.html/{{allItem.itemId}}'>More Info</a>
-				</div>
-			</div>
-			{% endfor %}
-		</div>
-	</div>
+
+  <div class="row">
+  <!-- <div class="card-deck"> -->
+
+      {% for allItem in allItems %}
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="card">
+
+          <img src="/media/{{allItem.pic}}" class="card-img-top img-fluid img-thumbnail " alt="image">
+          <div class="card-body">
+            <h5 class="card-title">Item:  {{ allItem.itemTitle }}</h5>
+            <p class="card-text"><b>Desc:</b>  {{ allItem.description }}</p>
+          </div>
+          <div class="card-action ">
+                <a class='btn btn-info right-align mr-1.5' href="{% url 'home:details' allItem.itemId %}">Buy Item</a>
+                <a class='btn btn-info right-align' href="{% url 'home:details' allItem.itemId %}">More Info</a>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">{{ allItem.post_time }}</small>
+          </div>
+
+       </div>
+      </div>
+    {% endfor %}
+</div>
 </div>
 
 {% endblock %}

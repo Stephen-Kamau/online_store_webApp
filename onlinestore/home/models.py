@@ -10,6 +10,7 @@ class Store_items(models.Model):
     pic = models.ImageField(max_length = 100 , default = "None")
     post_time = models.DateTimeField(auto_now_add=True)
     bought_status = models.BooleanField(default = False , max_length = 3)
+    description = models.CharField(max_length = 200)
 
     class Meta:
         db_table = "Store_items"

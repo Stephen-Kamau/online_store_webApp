@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
+    'signup',
+    'login',
+    'orders'
 ]
 
 MIDDLEWARE = [
@@ -57,6 +60,9 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
                os.path.join(BASE_DIR , 'home/templates'),
+               os.path.join(BASE_DIR , 'login/templates'),
+               os.path.join(BASE_DIR , 'signup/templates'),
+               os.path.join(BASE_DIR , 'orders/templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -127,4 +133,10 @@ STATIC_URL = '/static/'
 STATICFILES_URLS = [
 
    os.path.join(BASE_DIR , 'home/static'),
+   os.path.join(BASE_DIR , 'login/static'),
+   os.path.join(BASE_DIR , 'signup/static'),
+   os.path.join(BASE_DIR , 'orders/static'),
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR , 'media_root/')

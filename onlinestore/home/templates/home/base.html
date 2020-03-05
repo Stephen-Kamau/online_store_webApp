@@ -6,14 +6,21 @@
   {% block top %}
 
 	<title>online store</title>
+  <link rel="stylesheet" type="text/css" href="{% static './home/css/bootstrap.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static './home/css/materialize.css' %}">
-	<style type="text/css">
+  <link rel="stylesheet" type="text/css" href="{% static './home/css/style.css' %}">
+  <!-- <link rel="stylesheet" type="text/css" href="{% static './home/js/main.js' %}"> -->
+	<style type="text/css" >
         		.brand{
         			background: #cbb09c !important;
         		}
         		.brand-text{
         			color: #cbb09c !important;
+
         		}
+            .container{
+
+            }
         		nav{
         			background:transparent;
         		}
@@ -22,6 +29,19 @@
         			margin: 20px auto;
         			padding: 20px;
         		}
+            .details{
+              padding-top: 50px;
+              margin-left: 18%;
+              width:50%
+              /* position:absolute; */
+            }
+            .details_img{
+              height: 300px;
+              width: 350px;
+              position: relative;
+              margin-left: 25%;
+            }
+
 	</style>
   </head>
 
@@ -31,7 +51,13 @@
     {%  block header %}
   <nav class="white-z-depth-0">
   		<div class="container">
-  			<a href="#"class="brand-logo brand-text">Steves store</a>
+        <a href="{% url 'home:show' %}"class="mr-1.5 bg-danger btn">Home</a>
+        <a href="{% url 'orders:displayCart' %}"class="mr-1.5 bg-danger btn">Cart</a>
+        {% if username %}
+        <a href="{% url 'login:signout' %}"class="mr-1.5 bg-danger btn">Sign Out</a>
+        {% else %}
+        <a href="{% url 'login:login' %}"class="mr-1.5 bg-danger btn">Login</a>
+        {% endif %}
   			<ul id="nav-mobile" class="right hide-on-small-and-down">
   				<li><a href="{% url 'home:home' %}" class="btn brand z-depth-0">Add Items</a></li>
   			</ul>

@@ -9,24 +9,36 @@
             {% csrf_token %}
       			<label>Your Email:</label>
       			<input type="email" name="ownerEmail" value="">
-      			<div class="red-text"><?php echo $errors['email'] ?></div>
+      			<!-- <div class="red-text"></div> -->
             <label>Phone Number:</label>
             <input type="text" name="ownerPhone" value="">
-            <div class="red-text"><?php echo $errors['email'] ?></div>
+            <!-- <div class="red-text"></div> -->
       			<label>Item Title :</label>
       			<input type="text" name="itemTitle" value="">
-      			<div class="red-text"><?php echo $errors['title'] ?></div>
+      			<!-- <div class="red-text"></div> -->
       			<label>Material Built Type:</label>
       			<input type="text" name="BuiltType" value="">
-      			<div class="red-text"><?php echo $errors['components'] ?></div>
+      			<!-- <div class="red-text"></div> -->
+            <label>Description :</label>
+            <input type="text" name="description" value="">
+            <!-- <div class="red-text"></div> -->
             <label>Item Price :</label>
             <input type="number" name="price" value="">
-            <div class="red-text"><?php echo $errors['title'] ?></div>
-            <label>Item Image :</label>
-            <input type="file" name="pic" value="">
-            <div class="red-text"><?php echo $errors['title'] ?></div>
+            <!-- <div class="red-text"></div> -->
+            <!-- <label>Item Image :</label>
+            <input type="file" name="pic" value=""> -->
+            <div class="input-group mb-3">
+              <!-- <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+              </div> -->
+              <div class="custom-file">
+                <input type="file" name="pic" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+              </div>
+           </div>
+            <!-- <div class="red-text"></div> -->
       			<div class="center">
-      				<input type="submit" name="submit" value="submit" class="btn brand z-depth-0">
+      				<input type="submit" name="submit" value="submit" class="btn brand z-depth-0.9">
       			</div>
       		</form>
       	</section>
